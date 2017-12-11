@@ -7,8 +7,10 @@ before_script:
   - go get -u -t -v github.com/lflxp/dockerapi/...
 
 script:
- - go test -v ./...
- #- goveralls -service=travis-ci
+  - go test -v ./...
+  - go build
+   #- goveralls -service=travis-ci
+
 
 notifications:
   email:
