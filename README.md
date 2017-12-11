@@ -1,10 +1,16 @@
 # DockerApi [![Travis](https://travis-ci.org/lflxp/dockerapi.svg?branch=master)](https://api.travis-ci.org/lflxp/dockerapi) [![GoDoc](https://godoc.org/github.com/lflxp/dockerapi?status.svg)](https://godoc.org/github.com/lflxp/dockerapi) [![Coverage Status](https://coveralls.io/repos/github/lflxp/dockerapi/badge.svg?branch=master)](https://coveralls.io/github/lflxp/dockerapi?branch=master)
 # dockerapi
-docker api 
+根据docker api和etcd实现docker服务注册及实时监控的目的
 类似 [Registrator](https://github.com/gliderlabs/registrator) 实现docker服务自动注册的功能
 
 # sdk
 https://docs.docker.com/develop/sdk/examples/#commit-a-container
+
+# 服务注册后端 
+
+Etcd V3
+
+![注册展示](https://github.com/lflxp/dockerapi/blob/master/service.png)
 
 # usage
 
