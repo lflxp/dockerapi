@@ -56,7 +56,7 @@ func Register(conn *etcd.EtcdUi,serverPath,ip string,t int64) error {
 				}
 			}
 		} else {
-			err =conn.AddLease(fmt.Sprintf("%s/%s/%s:%d",serverPath,serverName,ip,id),fmt.Sprintf("%s::%s::%s::%s::%s::%s::%s",id,c.Image,dcommand,c.State,c.Status,"",c.Names),t)
+			err =conn.AddLease(fmt.Sprintf("%s/%s/%s:%s",serverPath,serverName,ip,id),fmt.Sprintf("%s::%s::%s::%s::%s::%s::%s",id,c.Image,dcommand,c.State,c.Status,"",c.Names),t)
 			if err != nil {
 				return err
 			}	
