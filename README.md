@@ -41,3 +41,14 @@ ENTRYPOINT ["/bin/dockerapi"]
 # Run
 
 > docker run -d --net=host --volume=/var/run/docker.sock:/var/run/docker.sock --name register lxp/dockerapi:0.1 -host={{etcdHost}}:{{etcdPort}}
+
+# client Api != server Api
+
+## docker add env on run
+
+> docker run -d --net=host --volume=/var/run/docker.sock:/var/run/docker.sock --name docker --env DOCKER_API_VERSION='{{docker server api version}}' docker/register -host={{etcdHost}}:{{etcdPort}}
+
+## console
+
+export DOCKER_API_VERSION='{{docker server api version}}'
+./dockerapi -host={{etcdHost}}:{{etcdPort}}

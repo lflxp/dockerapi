@@ -24,7 +24,7 @@ func Register(endpoint []string,serverPath,server string,t int64) error {
 	defer st.Close()
 	//验证ip
 	resp := st.Get("/ams/main/ansible/ip")
-	ip := curl.HttpsGet(string(resp.Kvs[0].Value))
+	ip := curl.HttpGet(string(resp.Kvs[0].Value))
 	// fmt.Println(ip)
 	for _,c := range data {
 		//注册地址格式
