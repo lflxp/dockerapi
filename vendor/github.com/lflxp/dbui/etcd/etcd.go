@@ -195,7 +195,7 @@ func (this *EtcdUi) InitClientConn() {
 	if this.Version != "2" {
 		cli,err := clientv3.New(clientv3.Config{
 			Endpoints:this.Endpoints,
-			DialTimeout:5*time.Second,
+			DialTimeout:time.Second,
 		})
 		if err != nil {
 			//fmt.Println(err.Error())
@@ -206,7 +206,7 @@ func (this *EtcdUi) InitClientConn() {
 		cfg := client.Config{
 			Endpoints: this.Endpoints,
 			Transport: client.DefaultTransport,
-			HeaderTimeoutPerRequest: 5 * time.Second,
+			HeaderTimeoutPerRequest: time.Second,
 		}
 		c,err := client.New(cfg)
 		if err != nil {
@@ -319,8 +319,8 @@ func (this *EtcdUi) ScannerPort(ipAndPort string) bool {
 //CRUD
 func (this *EtcdUi) AddLease(key,value string, ttl int64) error {
 	if this.ScannerPort(this.Endpoints[0]) {
-		this.InitClientConn()
-		defer this.Close()
+		// this.InitClientConn()
+		// defer this.Close()
 
 		resp,err := this.ClientConn.Grant(context.TODO(),ttl)
 		if err != nil {
@@ -350,8 +350,8 @@ func (this *EtcdUi) AddLease(key,value string, ttl int64) error {
 //CRUD
 func (this *EtcdUi) Add(key,value string) error {
 	if this.ScannerPort(this.Endpoints[0]) {
-		this.InitClientConn()
-		defer this.Close()
+		// this.InitClientConn()
+		// defer this.Close()
 	
 		ctx,cancel := context.WithTimeout(context.Background(),5*time.Second)
 		_,err := this.ClientConn.Put(ctx,key,value)
